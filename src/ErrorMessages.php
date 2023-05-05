@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Azi\Envalid;
 
-use ReturnTypeWillChange;
-
 /**
  * Class ErrorMessages
  *
@@ -110,7 +108,7 @@ class ErrorMessages implements \ArrayAccess, \JsonSerializable
      * @return bool true on success or false on failure. The return value will be casted to boolean if non-boolean was returned.
      * @since 5.0.0
      */
-    #[ReturnTypeWillChange] public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $this->has($offset);
     }
@@ -122,7 +120,7 @@ class ErrorMessages implements \ArrayAccess, \JsonSerializable
      * @return mixed Can return all value types.
      * @since 5.0.0
      */
-    #[ReturnTypeWillChange] public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->get($offset);
     }
@@ -133,7 +131,7 @@ class ErrorMessages implements \ArrayAccess, \JsonSerializable
      * @param mixed $offset
      * @param mixed $value
      */
-    #[ReturnTypeWillChange] public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->messages[ $offset ] = $value;
     }
@@ -145,7 +143,7 @@ class ErrorMessages implements \ArrayAccess, \JsonSerializable
      * @return void
      * @since 5.0.0
      */
-    #[ReturnTypeWillChange] public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->messages);
     }
@@ -155,7 +153,7 @@ class ErrorMessages implements \ArrayAccess, \JsonSerializable
      *
      * @return mixed data to be json serialized
      */
-    #[ReturnTypeWillChange] function jsonSerialize()
+    function jsonSerialize(): mixed
     {
         return $this->toArray();
     }
